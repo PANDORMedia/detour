@@ -1,0 +1,700 @@
+<title>Charte DÉTOUR 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: brand-book chapters in one reading column, sticky chapter index on wide screens, specimens break out to full column width */
+:root {
+  --encre: #16233F;
+  --jaune: #F2B705;
+  --craie: #F6F1E7;
+  --ciel: #BCD3EA;
+  --brique: #C4553A;
+  --ballast: #6B7385;
+  --bg: #F6F1E7;
+  --surface: #FCFAF5;
+  --fg: #16233F;
+  --muted: #5B6480;
+  --line: rgba(22, 35, 63, .14);
+  --o: #F2B705;
+  --tag-bg: rgba(22, 35, 63, .07);
+  --ok: #2F7D5B;
+  --no: #B4432C;
+  --display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1629; --surface: #16233F; --fg: #F6F1E7; --muted: #A7AFC4;
+    --line: rgba(246, 241, 231, .14); --tag-bg: rgba(246, 241, 231, .08);
+    --ok: #6FC49B; --no: #F08A70; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1629; --surface: #16233F; --fg: #F6F1E7; --muted: #A7AFC4;
+  --line: rgba(246, 241, 231, .14); --tag-bg: rgba(246, 241, 231, .08);
+  --ok: #6FC49B; --no: #F08A70; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.page { max-width: 1240px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 48px); padding-block: 0 96px; display: grid; grid-template-columns: 1fr; gap: 48px; }
+@media (min-width: 1040px) { .page { grid-template-columns: 200px minmax(0, 1fr); gap: 64px; } }
+nav.toc { display: none; }
+@media (min-width: 1040px) {
+  nav.toc { display: block; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 32px); align-self: start; padding-top: 40px; font-size: 14px; }
+  nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; counter-reset: c; }
+  nav.toc li { counter-increment: c; }
+  nav.toc a { color: var(--muted); text-decoration: none; display: flex; gap: 10px; }
+  nav.toc a::before { content: counter(c, decimal-leading-zero); font-family: var(--mono); font-size: 12px; padding-top: 2px; opacity: .7; }
+  nav.toc a:hover, nav.toc a:focus-visible { color: var(--fg); }
+}
+main { min-width: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--o); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 800; letter-spacing: -.02em; line-height: 1.05; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(34px, 5vw, 56px); }
+h3 { font-size: 22px; letter-spacing: -.01em; line-height: 1.2; }
+p { margin: 0; max-width: 64ch; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.lead { font-size: 21px; line-height: 1.5; max-width: 52ch; }
+.muted { color: var(--muted); }
+section.chap { padding-block: 88px 0; display: grid; gap: 28px; scroll-margin-top: 24px; }
+.chap-head { display: grid; gap: 14px; border-top: 2px solid var(--fg); padding-top: 18px; }
+.grid { display: grid; gap: 20px; }
+.g2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.g3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.g4 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.tag { display: inline-block; font-family: var(--mono); font-size: 12px; padding: 3px 9px; border-radius: 999px; background: var(--tag-bg); width: fit-content; }
+.tag.ok { color: var(--ok); }
+.tag.no { color: var(--no); }
+.mono { font-family: var(--mono); font-size: 13px; }
+figure { margin: 0; display: grid; gap: 10px; min-width: 0; }
+figcaption { font-size: 14px; color: var(--muted); }
+img { display: block; max-width: 100%; height: auto; border-radius: 10px; }
+
+.logo { display: block; width: 100%; height: auto; overflow: visible; }
+.logo .rest { fill: var(--fg); }
+.logo .o-fill { fill: var(--o); }
+.o-move { transform-box: fill-box; transform-origin: 50% 100%; }
+.logo.play .o-move { animation: saut 1150ms cubic-bezier(.3, .7, .4, 1) both; }
+@keyframes saut {
+  0% { transform: translate(0, 330px) scale(1, 1); }
+  16% { transform: translate(0, 330px) scale(1.08, .86); }
+  44% { transform: translate(0, -150px) scale(.95, 1.07); }
+  64% { transform: translate(0, 12px) scale(1.08, .9); }
+  76% { transform: translate(0, -10px) scale(.98, 1.02); }
+  100% { transform: translate(0, 0) scale(1, 1); }
+}
+@media (prefers-reduced-motion: reduce) { .logo.play .o-move { animation: none; } }
+
+.hero { padding-block: 56px 24px; display: grid; gap: 36px; }
+.hero-logo { cursor: pointer; max-width: 920px; background: none; border: 0; padding: 0; color: inherit; text-align: left; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: baseline; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 18px; }
+.hero h1 { font-size: clamp(28px, 3.4vw, 40px); max-width: 22ch; }
+.btn { font: 600 15px/1 var(--body); padding: 12px 18px; border-radius: 999px; border: 1.5px solid var(--fg); background: transparent; color: var(--fg); cursor: pointer; }
+.btn:hover { background: var(--fg); color: var(--bg); }
+.btn.solid { background: var(--fg); color: var(--bg); }
+
+.before-after { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 20px; }
+.ba { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); display: grid; }
+.ba .stage { aspect-ratio: 16 / 9; display: grid; place-items: center; padding: 28px; }
+.ba .stage.old { background: #FFFFFF; }
+.ba .stage.old img { border-radius: 0; max-height: 100%; width: auto; }
+.ba .stage.new { background: var(--craie); }
+.ba .stage.new .logo .rest { fill: var(--encre); }
+.ba .stage.new .logo { max-width: 78%; }
+.ba .txt { padding: 18px 20px; display: grid; gap: 6px; border-top: 1px solid var(--line); }
+
+.platform { display: grid; gap: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--surface); }
+.platform .row { display: grid; grid-template-columns: 1fr; gap: 6px 32px; padding: 22px; border-top: 1px solid var(--line); }
+.platform .row:first-child { border-top: 0; }
+@media (min-width: 720px) { .platform .row { grid-template-columns: 200px minmax(0, 1fr); } }
+.platform .k { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+.platform .v { font-size: 19px; }
+.platform .v.big { font-family: var(--display); font-weight: 800; font-size: clamp(24px, 3vw, 32px); line-height: 1.15; letter-spacing: -.01em; }
+
+.explo { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 20px; }
+.explo figure { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 10px 14px; }
+.explo img { border-radius: 6px; aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+.explo figure.win { outline: 3px solid var(--o); outline-offset: -1px; }
+.explo .cap { display: grid; gap: 4px; padding-inline: 4px; }
+.explo .cap b { font-family: var(--display); font-size: 17px; }
+.round { font-family: var(--display); font-weight: 600; font-size: 20px; margin-top: 8px; }
+
+.specimen { border-radius: 14px; padding: clamp(24px, 5vw, 56px); display: grid; place-items: center; min-width: 0; }
+.specimen .logo { max-width: 640px; }
+.sp-craie { background: var(--craie); }
+.sp-craie .logo .rest { fill: var(--encre); }
+.sp-encre { background: var(--encre); }
+.sp-encre .logo .rest { fill: var(--craie); }
+.sp-mono-e { background: var(--craie); }
+.sp-mono-e .logo .rest, .sp-mono-e .logo .o-fill { fill: var(--encre); }
+.sp-mono-b { background: var(--encre); }
+.sp-mono-b .logo .rest, .sp-mono-b .logo .o-fill { fill: #FFFFFF; }
+.sp-jaune { background: var(--jaune); }
+.sp-jaune .logo .rest { fill: var(--encre); }
+.sp-jaune .logo .o-fill { fill: #FFFFFF; }
+.sp-photo { background: center / cover no-repeat url(img/photo-train.jpg); min-height: 260px; place-items: start end; }
+.sp-photo .logo { max-width: 44%; }
+.sp-photo .logo .rest { fill: var(--craie); }
+
+.construct { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: clamp(16px, 3vw, 32px); overflow-x: auto; }
+.construct svg { display: block; width: 100%; min-width: 560px; height: auto; }
+.construct .rest { fill: var(--fg); opacity: .9; }
+.construct .o-fill { fill: var(--o); }
+.construct .guide { stroke: var(--muted); stroke-width: 4; stroke-dasharray: 18 14; fill: none; }
+.construct .guide.strong { stroke: var(--no); stroke-dasharray: none; stroke-width: 5; }
+.construct .lbl { fill: var(--muted); font: 500 46px var(--mono); }
+.construct .lbl.strong { fill: var(--no); }
+.construct .ghost { fill: none; stroke: var(--muted); stroke-width: 5; stroke-dasharray: 14 12; }
+.construct .zone { fill: none; stroke: var(--o); stroke-width: 6; stroke-dasharray: 24 16; }
+
+.icons { display: flex; flex-wrap: wrap; gap: 28px; align-items: end; }
+.icons figure { justify-items: start; }
+.icons svg { display: block; }
+
+.donts { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 20px; }
+.dont { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: grid; }
+.dont .st { background: var(--craie); padding: 26px 20px; display: grid; place-items: center; min-height: 120px; }
+.dont .st .logo .rest { fill: var(--encre); }
+.dont .txt { padding: 12px 16px 16px; font-size: 15px; display: grid; gap: 4px; border-top: 1px solid var(--line); }
+.dont .txt b::before { content: "✕ "; color: var(--no); }
+
+.motion { display: grid; gap: 20px; }
+.motion-stage { background: var(--craie); border-radius: 14px; padding: clamp(24px, 6vw, 72px); }
+.motion-stage .logo { max-width: 720px; margin: 0 auto; }
+.motion-stage .logo .rest { fill: var(--encre); }
+.timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+@media (max-width: 640px) { .timeline { grid-template-columns: 1fr 1fr; } }
+.timeline div { padding: 16px; border-left: 1px solid var(--line); display: grid; gap: 4px; align-content: start; }
+.timeline div:first-child { border-left: 0; }
+.timeline .ms { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.timeline b { font-family: var(--display); font-size: 18px; }
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 14px; }
+.sw { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); display: grid; }
+.sw .chip { height: 130px; padding: 14px; display: flex; align-items: flex-end; font-family: var(--display); font-weight: 800; font-size: 22px; }
+.sw .info { padding: 12px 14px 14px; display: grid; gap: 2px; font-size: 14px; }
+.sw button { all: unset; cursor: pointer; font-family: var(--mono); font-size: 13px; width: fit-content; border-bottom: 1px dashed var(--muted); }
+.sw button:focus-visible { outline: 3px solid var(--o); outline-offset: 2px; }
+.ratio { display: flex; height: 54px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+.ratio span { display: grid; place-items: center; font-family: var(--mono); font-size: 12px; }
+
+.type-spec { display: grid; gap: 20px; }
+.type-face { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: clamp(20px, 3vw, 32px); display: grid; gap: 12px; min-width: 0; }
+.type-face .big { font-size: clamp(54px, 9vw, 112px); line-height: .95; letter-spacing: -.03em; overflow-wrap: anywhere; }
+.scale { display: grid; gap: 0; border-top: 1px solid var(--line); }
+.scale div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 16px; align-items: baseline; padding-block: 12px; border-bottom: 1px solid var(--line); }
+.scale .mono { color: var(--muted); }
+
+.photos { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.photos figure:nth-child(1) { grid-column: span 4; }
+.photos figure:nth-child(2) { grid-column: span 2; grid-row: span 2; }
+.photos figure:nth-child(3) { grid-column: span 2; grid-row: span 2; }
+.photos figure:nth-child(4) { grid-column: span 2; }
+.photos figure:nth-child(5) { grid-column: span 2; }
+.photos img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 720px) { .photos { grid-template-columns: 1fr 1fr; } .photos figure { grid-column: span 1 !important; grid-row: auto !important; } .photos figure:nth-child(1) { grid-column: span 2 !important; } }
+
+.voice { display: grid; gap: 14px; }
+.vrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; }
+.vcell { border-radius: 12px; padding: 18px 20px; display: grid; gap: 6px; border: 1px solid var(--line); }
+.vcell.old { background: var(--tag-bg); }
+.vcell.old q { font-family: "Trebuchet MS", Arial, sans-serif; color: var(--muted); }
+.vcell.new { background: var(--surface); }
+.vcell.new q { font-family: var(--display); font-weight: 600; font-size: 20px; line-height: 1.3; }
+q { quotes: "« " " »"; }
+
+.apps { display: grid; gap: 24px; }
+.browser { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--craie); color: var(--encre); }
+.browser .bar { display: flex; gap: 6px; padding: 10px 14px; background: #E9E2D3; align-items: center; }
+.browser .bar i { width: 10px; height: 10px; border-radius: 50%; background: #CFC6B4; display: block; }
+.browser .bar span { margin-left: 10px; font: 12px var(--mono); color: #6B7385; background: #F6F1E7; padding: 3px 10px; border-radius: 6px; }
+.site-nav { display: flex; justify-content: space-between; align-items: center; padding: 18px clamp(16px, 3vw, 32px); gap: 16px; flex-wrap: wrap; }
+.site-nav .logo { width: 132px; }
+.site-nav .logo .rest { fill: var(--encre); }
+.site-nav ul { display: flex; gap: 22px; list-style: none; margin: 0; padding: 0; font-size: 14px; font-weight: 500; flex-wrap: wrap; }
+.site-hero { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0; }
+.site-hero .copy { padding: clamp(20px, 4vw, 48px); display: grid; gap: 18px; align-content: center; }
+.site-hero h4 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 4vw, 48px); line-height: 1.12; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
+.site-hero h4 em { font-style: normal; position: relative; top: -.2em; color: var(--encre); background: var(--jaune); border-radius: 999px; padding: 0 .15em; }
+.site-hero .img { min-height: 300px; background: center / cover url(img/photo-train.jpg); }
+.site-btn { background: var(--encre); color: var(--craie); border: 0; padding: 14px 20px; border-radius: 999px; font: 600 15px var(--body); width: fit-content; }
+.trio > figure:first-child { grid-column: 1 / -1; max-width: 640px; }
+.trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 24px; align-items: start; }
+
+.ticket { background: var(--craie); color: var(--encre); border-radius: 16px; display: grid; grid-template-columns: minmax(0, 1fr) 96px; overflow: hidden; border: 1px solid var(--line); position: relative; }
+.ticket .main { padding: 20px; display: grid; gap: 12px; border-right: 2px dashed rgba(22, 35, 63, .3); }
+.ticket .stub { background: var(--encre); display: grid; place-items: center; padding: 10px; }
+.ticket .stub svg { width: 64px; height: 64px; }
+.ticket .route { font-family: var(--display); font-weight: 800; font-size: 28px; line-height: 1; letter-spacing: -.02em; }
+.ticket dl { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 4px 14px; margin: 0; font-size: 14px; }
+.ticket dt { font: 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: #6B7385; padding-top: 3px; }
+.ticket dd { margin: 0; font-variant-numeric: tabular-nums; }
+.ticket .check { font: 12px var(--mono); background: rgba(242, 183, 5, .25); border-radius: 6px; padding: 6px 8px; }
+.ticket .logo { width: 96px; }
+.ticket .logo .rest { fill: var(--encre); }
+
+.post { aspect-ratio: 1 / 1; max-width: 100%; background: var(--jaune); color: var(--encre); border-radius: 14px; padding: 24px; display: grid; align-content: space-between; }
+.post p { font-family: var(--display); font-weight: 800; font-size: clamp(26px, 3vw, 34px); line-height: 1.02; letter-spacing: -.02em; }
+.post .logo { width: 110px; }
+.post .logo .rest { fill: var(--encre); }
+.post .logo .o-fill { fill: #FFFFFF; }
+
+.phone { width: 100%; max-width: 260px; aspect-ratio: 9 / 16; border-radius: 34px; background: center / cover url(img/photo-lyon.jpg); border: 8px solid #10182C; padding: 34px 18px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; align-content: start; }
+.phone .app { display: grid; gap: 4px; justify-items: center; font-size: 10px; color: #FFFFFF; text-shadow: 0 1px 2px rgba(0, 0, 0, .6); }
+.phone .app i { width: 44px; height: 44px; border-radius: 11px; display: block; background: rgba(255, 255, 255, .35); }
+.phone .app svg { width: 44px; height: 44px; }
+
+.files { display: grid; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--surface); }
+.files div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 12px 18px; border-top: 1px solid var(--line); align-items: baseline; }
+.files div:first-child { border-top: 0; }
+.files code { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; }
+.files span { color: var(--muted); font-size: 14px; text-align: right; }
+.toast { position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); transform: translateX(-50%); background: var(--fg); color: var(--bg); padding: 10px 16px; border-radius: 999px; font-size: 14px; }
+footer { padding-top: 72px; color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="p-rest" d="M122.85687255859375 0.0V-133.57147216796875H299.57098388671875Q341.8565673828125 -133.57147216796875 375.0708312988281 -151.28570556640625Q408.28509521484375 -168.99993896484375 427.5708312988281 -211.21420288085938Q446.8565673828125 -253.428466796875 446.8565673828125 -328.0Q446.8565673828125 -383.14288330078125 435.8565673828125 -421.14288330078125Q424.8565673828125 -459.14288330078125 403.9280090332031 -482.21429443359375Q382.99945068359375 -505.28570556640625 352.35662841796875 -515.8571166992188Q321.71380615234375 -526.4285278320312 281.7138671875 -526.4285278320312H122.85687255859375V-660.0H274.99957275390625Q393.71380615234375 -660.0 468.85662841796875 -621.0Q543.9994506835938 -582.0 579.4280090332031 -509.5Q614.8565673828125 -437.0 614.8565673828125 -336.0Q614.8565673828125 -258.0 596.9280090332031 -201.0Q578.9994506835938 -144.0 547.7137451171875 -105.14285278320312Q516.4280395507812 -66.28570556640625 476.7137756347656 -43.142852783203125Q436.99951171875 -20.0 392.5709533691406 -10.0Q348.14239501953125 0.0 304.57098388671875 0.0ZM48.5711669921875 0.0V-660.0H210.28546142578125V0.0ZM694.5711669921875 0.0V-660.0H856.5711669921875V0.0ZM814.4283447265625 0.0V-133.57147216796875H1181.7135620117188V0.0ZM814.4283447265625 -272.5714111328125V-392.4285888671875H1134.2850341796875V-272.5714111328125ZM814.4283447265625 -526.7142333984375V-660.0H1180.8564453125V-526.7142333984375ZM993.7140502929688 -711.4283447265625H856.5709838867188L921.1422729492188 -851.4279174804688H1094.571044921875ZM1399.142578125 0.0V-660.0H1561.142578125V0.0ZM1227.5714111328125 -523.142822265625V-660.0H1732.9994506835938V-523.142822265625ZM2756.99951171875 14.0Q2698.2852783203125 14.0 2652.1424560546875 1.142852783203125Q2605.9996337890625 -11.71429443359375 2572.4996643066406 -35.71429443359375Q2538.9996948242188 -59.71429443359375 2516.9282836914062 -93.35714721679688Q2494.8568725585938 -127.0 2484.0711669921875 -169.14285278320312Q2473.2854614257812 -211.28570556640625 2473.2854614257812 -260.5714111328125V-660.0H2635.2854614257812V-267.71429443359375Q2635.2854614257812 -217.5714111328125 2650.2854614257812 -186.92855834960938Q2665.2854614257812 -156.28570556640625 2692.3568420410156 -142.85714721679688Q2719.42822265625 -129.4285888671875 2756.7138061523438 -129.4285888671875Q2794.9993896484375 -129.4285888671875 2822.070770263672 -142.85714721679688Q2849.1421508789062 -156.28570556640625 2864.1421508789062 -186.5714111328125Q2879.1421508789062 -216.85711669921875 2879.1421508789062 -267.71429443359375V-660.0H3040.8564453125V-260.5714111328125Q3040.8564453125 -130.28570556640625 2969.570770263672 -58.142852783203125Q2898.2850952148438 14.0 2756.99951171875 14.0ZM3134.5711669921875 0.0V-660.0H3410.5711059570312Q3457.7138671875 -660.0 3498.7852478027344 -652.2142944335938Q3539.8566284179688 -644.4285888671875 3572.9280395507812 -629.0000305175781Q3605.9994506835938 -613.5714721679688 3629.9994506835938 -590.4286193847656Q3653.9994506835938 -567.2857666015625 3666.7137451171875 -536.0714721679688Q3679.4280395507812 -504.857177734375 3679.4280395507812 -465.71429443359375Q3679.4280395507812 -433.57147216796875 3668.785186767578 -405.9286193847656Q3658.142333984375 -378.2857666015625 3635.642333984375 -356.57147216796875Q3613.142333984375 -334.857177734375 3578.2137451171875 -320.7857360839844Q3543.28515625 -306.71429443359375 3495.427978515625 -300.71429443359375V-290.71435546875Q3557.142333984375 -286.85723876953125 3591.142364501953 -265.5715026855469Q3625.1423950195312 -244.2857666015625 3642.499542236328 -211.21432495117188Q3659.856689453125 -178.14288330078125 3669.99951171875 -137.42864990234375L3705.8566284179688 0.0H3526.8566284179688L3500.7138061523438 -128.1429443359375Q3493.856689453125 -163.857177734375 3480.4995727539062 -185.14288330078125Q3467.1424560546875 -206.4285888671875 3443.8567504882812 -216.00003051757812Q3420.571044921875 -225.57147216796875 3383.1424560546875 -225.57147216796875H3296.2854614257812V0.0ZM3296.2854614257812 -348.85723876953125H3394.571044921875Q3451.2852783203125 -348.85723876953125 3481.7138061523438 -370.71435546875Q3512.142333984375 -392.57147216796875 3512.142333984375 -437.85711669921875Q3512.142333984375 -485.7142333984375 3483.99951171875 -508.99993896484375Q3455.856689453125 -532.28564453125 3398.571044921875 -532.28564453125H3296.2854614257812Z"/>
+    <path id="p-o" d="M2085.4282836914062 14.0Q2014.8568725585938 14.0 1958.2854614257812 -8.0Q1901.7140502929688 -30.0 1861.9997863769531 -73.0Q1822.2855224609375 -116.0 1801.214111328125 -179.85714721679688Q1780.1427001953125 -243.71429443359375 1780.1427001953125 -327.0Q1780.1427001953125 -445.0 1819.6426696777344 -521.5Q1859.1426391601562 -598.0 1929.6426086425781 -636.0Q2000.142578125 -674.0 2091.4282836914062 -674.0Q2161.7139892578125 -674.0 2217.928253173828 -652.3571472167969Q2274.1425170898438 -630.7142944335938 2313.8567810058594 -587.7142944335938Q2353.571044921875 -544.7142944335938 2374.6424560546875 -480.21429443359375Q2395.7138671875 -415.71429443359375 2395.7138671875 -331.0Q2395.7138671875 -244.71429443359375 2373.6424560546875 -179.85714721679688Q2351.571044921875 -115.0 2310.4996337890625 -72.0Q2269.42822265625 -29.0 2212.2139587402344 -7.5Q2154.9996948242188 14.0 2085.4282836914062 14.0ZM2091.142578125 -117.00006103515625Q2137.285400390625 -117.00006103515625 2167.92822265625 -140.07147216796875Q2198.571044921875 -163.14288330078125 2213.9281616210938 -208.9285888671875Q2229.2852783203125 -254.71429443359375 2229.2852783203125 -323.14288330078125Q2229.2852783203125 -395.57147216796875 2213.071014404297 -444.0000305175781Q2196.8567504882812 -492.4285888671875 2165.2139282226562 -517.2142944335938Q2133.5711059570312 -542.0 2086.4282836914062 -542.0Q2041.2854614257812 -542.0 2010.1426391601562 -518.2142944335938Q1978.9998168945312 -494.4285888671875 1963.1427001953125 -447.2857360839844Q1947.2855834960938 -400.14288330078125 1947.2855834960938 -330.4285888671875Q1947.2855834960938 -277.71429443359375 1956.3569946289062 -237.57144165039062Q1965.4284057617188 -197.4285888671875 1983.4998168945312 -170.64288330078125Q2001.5712280273438 -143.857177734375 2028.5711975097656 -130.42861938476562Q2055.5711669921875 -117.00006103515625 2091.142578125 -117.00006103515625Z"/>
+    <path id="p-d" d="M122.85687255859375 0.0V-133.57147216796875H299.57098388671875Q341.8565673828125 -133.57147216796875 375.0708312988281 -151.28570556640625Q408.28509521484375 -168.99993896484375 427.5708312988281 -211.21420288085938Q446.8565673828125 -253.428466796875 446.8565673828125 -328.0Q446.8565673828125 -383.14288330078125 435.8565673828125 -421.14288330078125Q424.8565673828125 -459.14288330078125 403.9280090332031 -482.21429443359375Q382.99945068359375 -505.28570556640625 352.35662841796875 -515.8571166992188Q321.71380615234375 -526.4285278320312 281.7138671875 -526.4285278320312H122.85687255859375V-660.0H274.99957275390625Q393.71380615234375 -660.0 468.85662841796875 -621.0Q543.9994506835938 -582.0 579.4280090332031 -509.5Q614.8565673828125 -437.0 614.8565673828125 -336.0Q614.8565673828125 -258.0 596.9280090332031 -201.0Q578.9994506835938 -144.0 547.7137451171875 -105.14285278320312Q516.4280395507812 -66.28570556640625 476.7137756347656 -43.142852783203125Q436.99951171875 -20.0 392.5709533691406 -10.0Q348.14239501953125 0.0 304.57098388671875 0.0ZM48.5711669921875 0.0V-660.0H210.28546142578125V0.0Z"/>
+    <path id="p-u" d="M2756.99951171875 14.0Q2698.2852783203125 14.0 2652.1424560546875 1.142852783203125Q2605.9996337890625 -11.71429443359375 2572.4996643066406 -35.71429443359375Q2538.9996948242188 -59.71429443359375 2516.9282836914062 -93.35714721679688Q2494.8568725585938 -127.0 2484.0711669921875 -169.14285278320312Q2473.2854614257812 -211.28570556640625 2473.2854614257812 -260.5714111328125V-660.0H2635.2854614257812V-267.71429443359375Q2635.2854614257812 -217.5714111328125 2650.2854614257812 -186.92855834960938Q2665.2854614257812 -156.28570556640625 2692.3568420410156 -142.85714721679688Q2719.42822265625 -129.4285888671875 2756.7138061523438 -129.4285888671875Q2794.9993896484375 -129.4285888671875 2822.070770263672 -142.85714721679688Q2849.1421508789062 -156.28570556640625 2864.1421508789062 -186.5714111328125Q2879.1421508789062 -216.85711669921875 2879.1421508789062 -267.71429443359375V-660.0H3040.8564453125V-260.5714111328125Q3040.8564453125 -130.28570556640625 2969.570770263672 -58.142852783203125Q2898.2850952148438 14.0 2756.99951171875 14.0Z"/>
+    <path id="p-nou" d="M122.85687255859375 0.0V-133.57147216796875H299.57098388671875Q341.8565673828125 -133.57147216796875 375.0708312988281 -151.28570556640625Q408.28509521484375 -168.99993896484375 427.5708312988281 -211.21420288085938Q446.8565673828125 -253.428466796875 446.8565673828125 -328.0Q446.8565673828125 -383.14288330078125 435.8565673828125 -421.14288330078125Q424.8565673828125 -459.14288330078125 403.9280090332031 -482.21429443359375Q382.99945068359375 -505.28570556640625 352.35662841796875 -515.8571166992188Q321.71380615234375 -526.4285278320312 281.7138671875 -526.4285278320312H122.85687255859375V-660.0H274.99957275390625Q393.71380615234375 -660.0 468.85662841796875 -621.0Q543.9994506835938 -582.0 579.4280090332031 -509.5Q614.8565673828125 -437.0 614.8565673828125 -336.0Q614.8565673828125 -258.0 596.9280090332031 -201.0Q578.9994506835938 -144.0 547.7137451171875 -105.14285278320312Q516.4280395507812 -66.28570556640625 476.7137756347656 -43.142852783203125Q436.99951171875 -20.0 392.5709533691406 -10.0Q348.14239501953125 0.0 304.57098388671875 0.0ZM48.5711669921875 0.0V-660.0H210.28546142578125V0.0ZM694.5711669921875 0.0V-660.0H856.5711669921875V0.0ZM814.4283447265625 0.0V-133.57147216796875H1181.7135620117188V0.0ZM814.4283447265625 -272.5714111328125V-392.4285888671875H1134.2850341796875V-272.5714111328125ZM814.4283447265625 -526.7142333984375V-660.0H1180.8564453125V-526.7142333984375ZM993.7140502929688 -711.4283447265625H856.5709838867188L921.1422729492188 -851.4279174804688H1094.571044921875ZM1399.142578125 0.0V-660.0H1561.142578125V0.0ZM1227.5714111328125 -523.142822265625V-660.0H1732.9994506835938V-523.142822265625ZM3134.5711669921875 0.0V-660.0H3410.5711059570312Q3457.7138671875 -660.0 3498.7852478027344 -652.2142944335938Q3539.8566284179688 -644.4285888671875 3572.9280395507812 -629.0000305175781Q3605.9994506835938 -613.5714721679688 3629.9994506835938 -590.4286193847656Q3653.9994506835938 -567.2857666015625 3666.7137451171875 -536.0714721679688Q3679.4280395507812 -504.857177734375 3679.4280395507812 -465.71429443359375Q3679.4280395507812 -433.57147216796875 3668.785186767578 -405.9286193847656Q3658.142333984375 -378.2857666015625 3635.642333984375 -356.57147216796875Q3613.142333984375 -334.857177734375 3578.2137451171875 -320.7857360839844Q3543.28515625 -306.71429443359375 3495.427978515625 -300.71429443359375V-290.71435546875Q3557.142333984375 -286.85723876953125 3591.142364501953 -265.5715026855469Q3625.1423950195312 -244.2857666015625 3642.499542236328 -211.21432495117188Q3659.856689453125 -178.14288330078125 3669.99951171875 -137.42864990234375L3705.8566284179688 0.0H3526.8566284179688L3500.7138061523438 -128.1429443359375Q3493.856689453125 -163.857177734375 3480.4995727539062 -185.14288330078125Q3467.1424560546875 -206.4285888671875 3443.8567504882812 -216.00003051757812Q3420.571044921875 -225.57147216796875 3383.1424560546875 -225.57147216796875H3296.2854614257812V0.0ZM3296.2854614257812 -348.85723876953125H3394.571044921875Q3451.2852783203125 -348.85723876953125 3481.7138061523438 -370.71435546875Q3512.142333984375 -392.57147216796875 3512.142333984375 -437.85711669921875Q3512.142333984375 -485.7142333984375 3483.99951171875 -508.99993896484375Q3455.856689453125 -532.28564453125 3398.571044921875 -532.28564453125H3296.2854614257812Z"/>
+  </defs>
+</svg>
+
+<div class="page">
+  <nav class="toc" aria-label="Chapitres">
+    <ol>
+      <li><a href="#pourquoi">Pourquoi changer</a></li>
+      <li><a href="#plateforme">Plateforme</a></li>
+      <li><a href="#exploration">Exploration</a></li>
+      <li><a href="#logo">Le logo</a></li>
+      <li><a href="#mouvement">Mouvement</a></li>
+      <li><a href="#couleurs">Couleurs</a></li>
+      <li><a href="#typographie">Typographie</a></li>
+      <li><a href="#photo">Photographie</a></li>
+      <li><a href="#voix">Ton de voix</a></li>
+      <li><a href="#applications">Applications</a></li>
+      <li><a href="#fichiers">Fichiers</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <span class="eyebrow">Charte de marque · version 1.0 · octobre 2026</span>
+      <button class="hero-logo" id="heroLogo" aria-label="Rejouer le saut du O">
+        <svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="DÉTOUR"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg>
+      </button>
+      <div class="hero-meta">
+        <h1>Le meilleur du voyage, c'est le pas de côté.</h1>
+        <p class="muted">Cliquez sur le logo pour voir le O sauter.</p>
+      </div>
+    </header>
+
+    <section class="chap" id="pourquoi">
+      <div class="chap-head">
+        <span class="eyebrow">01 · Pourquoi changer</span>
+        <h2>Une marque de 2012 pour un métier de 2026</h2>
+        <p class="lead">DÉTOUR vend du conseil sur mesure. Son identité actuelle vend une promo de comparateur.</p>
+      </div>
+      <div class="before-after">
+        <div class="ba">
+          <div class="stage old"><img src="img/ancien-logo.jpg" alt="Ancien logo DÉTOUR : lettres bleues brillantes en dégradé, swoosh orange"></div>
+          <div class="txt"><span class="tag">2012</span><p>Dégradé brillant, ombre portée, swoosh. Illisible en petit, impossible à décliner en une couleur, interchangeable avec mille agences.</p></div>
+        </div>
+        <div class="ba">
+          <div class="stage new"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="DÉTOUR"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div>
+          <div class="txt"><span class="tag">2026</span><p>Une idée, un geste : le O sort du rang. Deux couleurs à plat, lisible en favicon comme en vitrine, et un mouvement qui raconte le métier.</p></div>
+        </div>
+      </div>
+      <div class="grid g4">
+        <div class="card"><h3>Ce qu'on garde</h3><p class="muted">Le nom, l'accent, la promesse d'insolite. Le capital de marque est dans le mot.</p></div>
+        <div class="card"><h3>Ce qu'on quitte</h3><p class="muted">Le ton « Partez autrement ! », les photos de banque d'images, les points d'exclamation.</p></div>
+        <div class="card"><h3>Ce qui change</h3><p class="muted">On montre le travail des conseillers : vérifier, composer, proposer. Le sérieux devient un argument.</p></div>
+        <div class="card"><h3>Où ça vit</h3><p class="muted">Site, back-office conseillers, propositions envoyées aux voyageurs, billets, réseaux, vitrine de Nantes.</p></div>
+      </div>
+    </section>
+
+    <section class="chap" id="plateforme">
+      <div class="chap-head">
+        <span class="eyebrow">02 · Plateforme de marque</span>
+        <h2>Ce que DÉTOUR promet</h2>
+      </div>
+      <div class="platform">
+        <div class="row"><span class="k">Raison d'être</span><span class="v big">Rendre au voyage sa part d'imprévu, sans les mauvaises surprises.</span></div>
+        <div class="row"><span class="k">Promesse</span><span class="v">Un week-end en train composé par une personne qui a vérifié chaque prix, chaque place et chaque horaire avant de vous le proposer.</span></div>
+        <div class="row"><span class="k">Positionnement</span><span class="v">Pour les citadins qui ont deux jours et pas de voiture, DÉTOUR est l'agence qui trouve le détour qu'ils n'auraient pas trouvé seuls, parce qu'un conseiller connaît le terrain et garde la main sur chaque réservation.</span></div>
+        <div class="row"><span class="k">Valeurs</span><span class="v"><b>Curiosité</b> : on cherche l'adresse d'à côté. <b>Exactitude</b> : un prix affiché est un prix vérifié. <b>Attention</b> : une personne répond, signe et rappelle.</span></div>
+        <div class="row"><span class="k">Personnalité</span><span class="v">Malicieuse, précise, chaleureuse. Jamais pressée, jamais criarde.</span></div>
+        <div class="row"><span class="k">Signature</span><span class="v big">Prenez le pas de côté.</span></div>
+      </div>
+    </section>
+
+    <section class="chap" id="exploration">
+      <div class="chap-head">
+        <span class="eyebrow">03 · Exploration</span>
+        <h2>Onze territoires, un retenu</h2>
+        <p class="lead">Deux tours de recherche en planches de concept. Chaque piste a été jugée sur trois critères : raconte-t-elle le détour, tient-elle à 16 pixels, appartient-elle à DÉTOUR seulement ?</p>
+      </div>
+      <p class="round">Premier tour</p>
+      <div class="explo">
+        <figure><img src="img/explo-1-trajet.jpg" alt="Planche Le trajet : l'accent devient un chemin terminé par un point" loading="lazy"><figcaption class="cap"><b>Le trajet</b><span class="tag no">Écartée</span><span>Le chemin terminé par un point évoque un spermatozoïde. Rédhibitoire.</span></figcaption></figure>
+        <figure><img src="img/explo-2-composteur.jpg" alt="Planche Le composteur : billet perforé en forme de D" loading="lazy"><figcaption class="cap"><b>Le composteur</b><span class="tag no">Écartée</span><span>Forte mais froide. Parle du transport, pas du conseil.</span></figcaption></figure>
+        <figure><img src="img/explo-3-pli.jpg" alt="Planche Le pli : D en carte pliée, serif bleu" loading="lazy"><figcaption class="cap"><b>Le pli</b><span class="tag no">Écartée</span><span>Élégant mais corporate. Le D plié se lit mal.</span></figcaption></figure>
+        <figure><img src="img/explo-4-signal.jpg" alt="Planche La signalétique : flèche de déviation dans le U" loading="lazy"><figcaption class="cap"><b>La signalétique</b><span class="tag no">Écartée</span><span>Univers routier, contraire au « sans voiture ».</span></figcaption></figure>
+        <figure><img src="img/explo-5-boucle.jpg" alt="Planche La boucle : le O dessiné d'un trait qui boucle" loading="lazy"><figcaption class="cap"><b>La boucle</b><span class="tag no">Écartée</span><span>Singulière, mais le trait fin disparaît en petit.</span></figcaption></figure>
+        <figure><img src="img/explo-6-carte-postale.jpg" alt="Planche La carte postale : script rouge et oblitération bleue" loading="lazy"><figcaption class="cap"><b>La carte postale</b><span class="tag no">Écartée</span><span>Script générique, déjà vu partout.</span></figcaption></figure>
+      </div>
+      <p class="round">Second tour</p>
+      <div class="explo">
+        <figure class="win"><img src="img/explo-7-pas-de-cote.jpg" alt="Planche Le pas de côté : le O jaune sort de la ligne" loading="lazy"><figcaption class="cap"><b>Le pas de côté</b><span class="tag ok">Retenue</span><span>Purement typographique, drôle sans être enfantin, et elle s'anime.</span></figcaption></figure>
+        <figure><img src="img/explo-8-aiguillage.jpg" alt="Planche L'aiguillage : accent en rails qui divergent" loading="lazy"><figcaption class="cap"><b>L'aiguillage</b><span class="tag no">Écartée</span><span>L'accent ressemble à une courbe de bourse.</span></figcaption></figure>
+        <figure><img src="img/explo-9-parenthese.jpg" alt="Planche La parenthèse : DÉTOUR entre deux grandes parenthèses" loading="lazy"><figcaption class="cap"><b>La parenthèse</b><span class="tag no">Écartée</span><span>Beau concept, univers trop parfumerie.</span></figcaption></figure>
+        <figure><img src="img/explo-10-meandre.jpg" alt="Planche Le méandre : ruban plié en D" loading="lazy"><figcaption class="cap"><b>Le méandre</b><span class="tag no">Écartée</span><span>Le monogramme se lit comme un 2.</span></figcaption></figure>
+        <figure><img src="img/explo-11-horizon.jpg" alt="Planche L'horizon décalé : soleil au-dessus d'une barre" loading="lazy"><figcaption class="cap"><b>L'horizon décalé</b><span class="tag no">Écartée</span><span>Générique, le décalage ne se voit pas.</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="chap" id="logo">
+      <div class="chap-head">
+        <span class="eyebrow">04 · Le logo</span>
+        <h2>Le O sort du rang</h2>
+        <p class="lead">Cinq lettres restent sur la ligne. Le O monte d'une demi-hauteur de capitale : c'est lui qui a pris le détour.</p>
+      </div>
+
+      <h3>Construction</h3>
+      <div class="construct">
+        <svg viewBox="-160 -1240 4400 1460" role="img" aria-label="Construction du logo : ligne de base, hauteur de capitale, et le O décalé d'une demi-capitale au-dessus de sa position d'origine">
+          <line class="guide" x1="-100" x2="3780" y1="0" y2="0"/>
+          <line class="guide" x1="-100" x2="3780" y1="-660" y2="-660"/>
+          <line class="guide strong" x1="1700" x2="2480" y1="-330" y2="-330"/>
+          <use href="#p-o" class="ghost"/>
+          <use href="#p-rest" class="rest"/>
+          <g transform="translate(0 -330)"><use href="#p-o" class="o-fill"/></g>
+          <line class="guide strong" x1="2440" x2="2440" y1="0" y2="-330"/>
+          <text class="lbl" x="3800" y="14">ligne de base</text>
+          <text class="lbl" x="3800" y="-646">capitale · 660</text>
+          <text class="lbl strong" x="2480" y="-150">saut = ½ capitale · 330</text>
+          <text class="lbl" x="1720" y="-1060">le O garde sa chasse</text>
+        </svg>
+      </div>
+      <div class="grid g3">
+        <div class="card"><h3>Le saut</h3><p class="muted">Le O monte exactement de la moitié de la hauteur de capitale. Ni plus, ni moins, à toutes les tailles.</p></div>
+        <div class="card"><h3>La place vide</h3><p class="muted">Le O ne se décale pas latéralement. Le trou qu'il laisse sur la ligne fait partie du dessin.</p></div>
+        <div class="card"><h3>Le dessin</h3><p class="muted">Bricolage Grotesque ExtraBold vectorisée, approche d'origine. Le logo est un fichier, jamais une police tapée.</p></div>
+      </div>
+
+      <h3>Versions</h3>
+      <div class="grid g2">
+        <figure><div class="specimen sp-craie"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="DÉTOUR"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div><figcaption>Principale : encre et jaune sur craie.</figcaption></figure>
+        <figure><div class="specimen sp-encre"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="DÉTOUR"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div><figcaption>Négatif : craie et jaune sur encre.</figcaption></figure>
+        <figure><div class="specimen sp-mono-e"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="DÉTOUR"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div><figcaption>Monochrome encre : tampons, gravure, fax.</figcaption></figure>
+        <figure><div class="specimen sp-mono-b"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="DÉTOUR"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div><figcaption>Monochrome blanc : sur photo sombre ou aplat.</figcaption></figure>
+        <figure><div class="specimen sp-jaune"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="DÉTOUR"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div><figcaption>Sur jaune : le O passe en blanc, jamais en jaune sur jaune.</figcaption></figure>
+        <figure><div class="specimen sp-photo"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="DÉTOUR"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div><figcaption>Sur photo : craie, sur une zone calme de l'image.</figcaption></figure>
+      </div>
+
+      <h3>Monogramme et icônes</h3>
+      <div class="grid">
+        <figure>
+          <div class="specimen sp-craie">
+            <div class="icons">
+              <figure><svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" role="img" aria-label="Icône DÉTOUR" viewBox="-267.75 -1442.25 1894.5 1894.5"><rect x="-267.75" y="-1442.25" width="1894.5" height="1894.5" rx="426.2625" fill="#16233F"/><path d="M122.85687255859375 0.0V-133.57147216796875H299.57098388671875Q341.8565673828125 -133.57147216796875 375.0708312988281 -151.28570556640625Q408.28509521484375 -168.99993896484375 427.5708312988281 -211.21420288085938Q446.8565673828125 -253.428466796875 446.8565673828125 -328.0Q446.8565673828125 -383.14288330078125 435.8565673828125 -421.14288330078125Q424.8565673828125 -459.14288330078125 403.9280090332031 -482.21429443359375Q382.99945068359375 -505.28570556640625 352.35662841796875 -515.8571166992188Q321.71380615234375 -526.4285278320312 281.7138671875 -526.4285278320312H122.85687255859375V-660.0H274.99957275390625Q393.71380615234375 -660.0 468.85662841796875 -621.0Q543.9994506835938 -582.0 579.4280090332031 -509.5Q614.8565673828125 -437.0 614.8565673828125 -336.0Q614.8565673828125 -258.0 596.9280090332031 -201.0Q578.9994506835938 -144.0 547.7137451171875 -105.14285278320312Q516.4280395507812 -66.28570556640625 476.7137756347656 -43.142852783203125Q436.99951171875 -20.0 392.5709533691406 -10.0Q348.14239501953125 0.0 304.57098388671875 0.0ZM48.5711669921875 0.0V-660.0H210.28546142578125V0.0Z" fill="#F6F1E7"/><g transform="translate(-1085 -330)"><path d="M2085.4282836914062 14.0Q2014.8568725585938 14.0 1958.2854614257812 -8.0Q1901.7140502929688 -30.0 1861.9997863769531 -73.0Q1822.2855224609375 -116.0 1801.214111328125 -179.85714721679688Q1780.1427001953125 -243.71429443359375 1780.1427001953125 -327.0Q1780.1427001953125 -445.0 1819.6426696777344 -521.5Q1859.1426391601562 -598.0 1929.6426086425781 -636.0Q2000.142578125 -674.0 2091.4282836914062 -674.0Q2161.7139892578125 -674.0 2217.928253173828 -652.3571472167969Q2274.1425170898438 -630.7142944335938 2313.8567810058594 -587.7142944335938Q2353.571044921875 -544.7142944335938 2374.6424560546875 -480.21429443359375Q2395.7138671875 -415.71429443359375 2395.7138671875 -331.0Q2395.7138671875 -244.71429443359375 2373.6424560546875 -179.85714721679688Q2351.571044921875 -115.0 2310.4996337890625 -72.0Q2269.42822265625 -29.0 2212.2139587402344 -7.5Q2154.9996948242188 14.0 2085.4282836914062 14.0ZM2091.142578125 -117.00006103515625Q2137.285400390625 -117.00006103515625 2167.92822265625 -140.07147216796875Q2198.571044921875 -163.14288330078125 2213.9281616210938 -208.9285888671875Q2229.2852783203125 -254.71429443359375 2229.2852783203125 -323.14288330078125Q2229.2852783203125 -395.57147216796875 2213.071014404297 -444.0000305175781Q2196.8567504882812 -492.4285888671875 2165.2139282226562 -517.2142944335938Q2133.5711059570312 -542.0 2086.4282836914062 -542.0Q2041.2854614257812 -542.0 2010.1426391601562 -518.2142944335938Q1978.9998168945312 -494.4285888671875 1963.1427001953125 -447.2857360839844Q1947.2855834960938 -400.14288330078125 1947.2855834960938 -330.4285888671875Q1947.2855834960938 -277.71429443359375 1956.3569946289062 -237.57144165039062Q1965.4284057617188 -197.4285888671875 1983.4998168945312 -170.64288330078125Q2001.5712280273438 -143.857177734375 2028.5711975097656 -130.42861938476562Q2055.5711669921875 -117.00006103515625 2091.142578125 -117.00006103515625Z" fill="#F2B705"/></g></svg><figcaption>App · 96</figcaption></figure>
+              <figure><svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" role="img" aria-label="Avatar DÉTOUR" viewBox="-267.75 -1442.25 1894.5 1894.5"><rect x="-267.75" y="-1442.25" width="1894.5" height="1894.5" rx="947.25" fill="#F2B705"/><path d="M122.85687255859375 0.0V-133.57147216796875H299.57098388671875Q341.8565673828125 -133.57147216796875 375.0708312988281 -151.28570556640625Q408.28509521484375 -168.99993896484375 427.5708312988281 -211.21420288085938Q446.8565673828125 -253.428466796875 446.8565673828125 -328.0Q446.8565673828125 -383.14288330078125 435.8565673828125 -421.14288330078125Q424.8565673828125 -459.14288330078125 403.9280090332031 -482.21429443359375Q382.99945068359375 -505.28570556640625 352.35662841796875 -515.8571166992188Q321.71380615234375 -526.4285278320312 281.7138671875 -526.4285278320312H122.85687255859375V-660.0H274.99957275390625Q393.71380615234375 -660.0 468.85662841796875 -621.0Q543.9994506835938 -582.0 579.4280090332031 -509.5Q614.8565673828125 -437.0 614.8565673828125 -336.0Q614.8565673828125 -258.0 596.9280090332031 -201.0Q578.9994506835938 -144.0 547.7137451171875 -105.14285278320312Q516.4280395507812 -66.28570556640625 476.7137756347656 -43.142852783203125Q436.99951171875 -20.0 392.5709533691406 -10.0Q348.14239501953125 0.0 304.57098388671875 0.0ZM48.5711669921875 0.0V-660.0H210.28546142578125V0.0Z" fill="#16233F"/><g transform="translate(-1085 -330)"><path d="M2085.4282836914062 14.0Q2014.8568725585938 14.0 1958.2854614257812 -8.0Q1901.7140502929688 -30.0 1861.9997863769531 -73.0Q1822.2855224609375 -116.0 1801.214111328125 -179.85714721679688Q1780.1427001953125 -243.71429443359375 1780.1427001953125 -327.0Q1780.1427001953125 -445.0 1819.6426696777344 -521.5Q1859.1426391601562 -598.0 1929.6426086425781 -636.0Q2000.142578125 -674.0 2091.4282836914062 -674.0Q2161.7139892578125 -674.0 2217.928253173828 -652.3571472167969Q2274.1425170898438 -630.7142944335938 2313.8567810058594 -587.7142944335938Q2353.571044921875 -544.7142944335938 2374.6424560546875 -480.21429443359375Q2395.7138671875 -415.71429443359375 2395.7138671875 -331.0Q2395.7138671875 -244.71429443359375 2373.6424560546875 -179.85714721679688Q2351.571044921875 -115.0 2310.4996337890625 -72.0Q2269.42822265625 -29.0 2212.2139587402344 -7.5Q2154.9996948242188 14.0 2085.4282836914062 14.0ZM2091.142578125 -117.00006103515625Q2137.285400390625 -117.00006103515625 2167.92822265625 -140.07147216796875Q2198.571044921875 -163.14288330078125 2213.9281616210938 -208.9285888671875Q2229.2852783203125 -254.71429443359375 2229.2852783203125 -323.14288330078125Q2229.2852783203125 -395.57147216796875 2213.071014404297 -444.0000305175781Q2196.8567504882812 -492.4285888671875 2165.2139282226562 -517.2142944335938Q2133.5711059570312 -542.0 2086.4282836914062 -542.0Q2041.2854614257812 -542.0 2010.1426391601562 -518.2142944335938Q1978.9998168945312 -494.4285888671875 1963.1427001953125 -447.2857360839844Q1947.2855834960938 -400.14288330078125 1947.2855834960938 -330.4285888671875Q1947.2855834960938 -277.71429443359375 1956.3569946289062 -237.57144165039062Q1965.4284057617188 -197.4285888671875 1983.4998168945312 -170.64288330078125Q2001.5712280273438 -143.857177734375 2028.5711975097656 -130.42861938476562Q2055.5711669921875 -117.00006103515625 2091.142578125 -117.00006103515625Z" fill="#F6F1E7"/></g></svg><figcaption>Avatar · 96</figcaption></figure>
+              <figure><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" role="img" aria-label="Icône DÉTOUR" viewBox="-267.75 -1442.25 1894.5 1894.5"><rect x="-267.75" y="-1442.25" width="1894.5" height="1894.5" rx="426.2625" fill="#16233F"/><path d="M122.85687255859375 0.0V-133.57147216796875H299.57098388671875Q341.8565673828125 -133.57147216796875 375.0708312988281 -151.28570556640625Q408.28509521484375 -168.99993896484375 427.5708312988281 -211.21420288085938Q446.8565673828125 -253.428466796875 446.8565673828125 -328.0Q446.8565673828125 -383.14288330078125 435.8565673828125 -421.14288330078125Q424.8565673828125 -459.14288330078125 403.9280090332031 -482.21429443359375Q382.99945068359375 -505.28570556640625 352.35662841796875 -515.8571166992188Q321.71380615234375 -526.4285278320312 281.7138671875 -526.4285278320312H122.85687255859375V-660.0H274.99957275390625Q393.71380615234375 -660.0 468.85662841796875 -621.0Q543.9994506835938 -582.0 579.4280090332031 -509.5Q614.8565673828125 -437.0 614.8565673828125 -336.0Q614.8565673828125 -258.0 596.9280090332031 -201.0Q578.9994506835938 -144.0 547.7137451171875 -105.14285278320312Q516.4280395507812 -66.28570556640625 476.7137756347656 -43.142852783203125Q436.99951171875 -20.0 392.5709533691406 -10.0Q348.14239501953125 0.0 304.57098388671875 0.0ZM48.5711669921875 0.0V-660.0H210.28546142578125V0.0Z" fill="#F6F1E7"/><g transform="translate(-1085 -330)"><path d="M2085.4282836914062 14.0Q2014.8568725585938 14.0 1958.2854614257812 -8.0Q1901.7140502929688 -30.0 1861.9997863769531 -73.0Q1822.2855224609375 -116.0 1801.214111328125 -179.85714721679688Q1780.1427001953125 -243.71429443359375 1780.1427001953125 -327.0Q1780.1427001953125 -445.0 1819.6426696777344 -521.5Q1859.1426391601562 -598.0 1929.6426086425781 -636.0Q2000.142578125 -674.0 2091.4282836914062 -674.0Q2161.7139892578125 -674.0 2217.928253173828 -652.3571472167969Q2274.1425170898438 -630.7142944335938 2313.8567810058594 -587.7142944335938Q2353.571044921875 -544.7142944335938 2374.6424560546875 -480.21429443359375Q2395.7138671875 -415.71429443359375 2395.7138671875 -331.0Q2395.7138671875 -244.71429443359375 2373.6424560546875 -179.85714721679688Q2351.571044921875 -115.0 2310.4996337890625 -72.0Q2269.42822265625 -29.0 2212.2139587402344 -7.5Q2154.9996948242188 14.0 2085.4282836914062 14.0ZM2091.142578125 -117.00006103515625Q2137.285400390625 -117.00006103515625 2167.92822265625 -140.07147216796875Q2198.571044921875 -163.14288330078125 2213.9281616210938 -208.9285888671875Q2229.2852783203125 -254.71429443359375 2229.2852783203125 -323.14288330078125Q2229.2852783203125 -395.57147216796875 2213.071014404297 -444.0000305175781Q2196.8567504882812 -492.4285888671875 2165.2139282226562 -517.2142944335938Q2133.5711059570312 -542.0 2086.4282836914062 -542.0Q2041.2854614257812 -542.0 2010.1426391601562 -518.2142944335938Q1978.9998168945312 -494.4285888671875 1963.1427001953125 -447.2857360839844Q1947.2855834960938 -400.14288330078125 1947.2855834960938 -330.4285888671875Q1947.2855834960938 -277.71429443359375 1956.3569946289062 -237.57144165039062Q1965.4284057617188 -197.4285888671875 1983.4998168945312 -170.64288330078125Q2001.5712280273438 -143.857177734375 2028.5711975097656 -130.42861938476562Q2055.5711669921875 -117.00006103515625 2091.142578125 -117.00006103515625Z" fill="#F2B705"/></g></svg><figcaption>48</figcaption></figure>
+              <figure><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" role="img" aria-label="Icône DÉTOUR" viewBox="-267.75 -1442.25 1894.5 1894.5"><rect x="-267.75" y="-1442.25" width="1894.5" height="1894.5" rx="426.2625" fill="#16233F"/><path d="M122.85687255859375 0.0V-133.57147216796875H299.57098388671875Q341.8565673828125 -133.57147216796875 375.0708312988281 -151.28570556640625Q408.28509521484375 -168.99993896484375 427.5708312988281 -211.21420288085938Q446.8565673828125 -253.428466796875 446.8565673828125 -328.0Q446.8565673828125 -383.14288330078125 435.8565673828125 -421.14288330078125Q424.8565673828125 -459.14288330078125 403.9280090332031 -482.21429443359375Q382.99945068359375 -505.28570556640625 352.35662841796875 -515.8571166992188Q321.71380615234375 -526.4285278320312 281.7138671875 -526.4285278320312H122.85687255859375V-660.0H274.99957275390625Q393.71380615234375 -660.0 468.85662841796875 -621.0Q543.9994506835938 -582.0 579.4280090332031 -509.5Q614.8565673828125 -437.0 614.8565673828125 -336.0Q614.8565673828125 -258.0 596.9280090332031 -201.0Q578.9994506835938 -144.0 547.7137451171875 -105.14285278320312Q516.4280395507812 -66.28570556640625 476.7137756347656 -43.142852783203125Q436.99951171875 -20.0 392.5709533691406 -10.0Q348.14239501953125 0.0 304.57098388671875 0.0ZM48.5711669921875 0.0V-660.0H210.28546142578125V0.0Z" fill="#F6F1E7"/><g transform="translate(-1085 -330)"><path d="M2085.4282836914062 14.0Q2014.8568725585938 14.0 1958.2854614257812 -8.0Q1901.7140502929688 -30.0 1861.9997863769531 -73.0Q1822.2855224609375 -116.0 1801.214111328125 -179.85714721679688Q1780.1427001953125 -243.71429443359375 1780.1427001953125 -327.0Q1780.1427001953125 -445.0 1819.6426696777344 -521.5Q1859.1426391601562 -598.0 1929.6426086425781 -636.0Q2000.142578125 -674.0 2091.4282836914062 -674.0Q2161.7139892578125 -674.0 2217.928253173828 -652.3571472167969Q2274.1425170898438 -630.7142944335938 2313.8567810058594 -587.7142944335938Q2353.571044921875 -544.7142944335938 2374.6424560546875 -480.21429443359375Q2395.7138671875 -415.71429443359375 2395.7138671875 -331.0Q2395.7138671875 -244.71429443359375 2373.6424560546875 -179.85714721679688Q2351.571044921875 -115.0 2310.4996337890625 -72.0Q2269.42822265625 -29.0 2212.2139587402344 -7.5Q2154.9996948242188 14.0 2085.4282836914062 14.0ZM2091.142578125 -117.00006103515625Q2137.285400390625 -117.00006103515625 2167.92822265625 -140.07147216796875Q2198.571044921875 -163.14288330078125 2213.9281616210938 -208.9285888671875Q2229.2852783203125 -254.71429443359375 2229.2852783203125 -323.14288330078125Q2229.2852783203125 -395.57147216796875 2213.071014404297 -444.0000305175781Q2196.8567504882812 -492.4285888671875 2165.2139282226562 -517.2142944335938Q2133.5711059570312 -542.0 2086.4282836914062 -542.0Q2041.2854614257812 -542.0 2010.1426391601562 -518.2142944335938Q1978.9998168945312 -494.4285888671875 1963.1427001953125 -447.2857360839844Q1947.2855834960938 -400.14288330078125 1947.2855834960938 -330.4285888671875Q1947.2855834960938 -277.71429443359375 1956.3569946289062 -237.57144165039062Q1965.4284057617188 -197.4285888671875 1983.4998168945312 -170.64288330078125Q2001.5712280273438 -143.857177734375 2028.5711975097656 -130.42861938476562Q2055.5711669921875 -117.00006103515625 2091.142578125 -117.00006103515625Z" fill="#F2B705"/></g></svg><figcaption>24</figcaption></figure>
+              <figure><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" role="img" aria-label="Icône DÉTOUR" viewBox="-267.75 -1442.25 1894.5 1894.5"><rect x="-267.75" y="-1442.25" width="1894.5" height="1894.5" rx="426.2625" fill="#16233F"/><path d="M122.85687255859375 0.0V-133.57147216796875H299.57098388671875Q341.8565673828125 -133.57147216796875 375.0708312988281 -151.28570556640625Q408.28509521484375 -168.99993896484375 427.5708312988281 -211.21420288085938Q446.8565673828125 -253.428466796875 446.8565673828125 -328.0Q446.8565673828125 -383.14288330078125 435.8565673828125 -421.14288330078125Q424.8565673828125 -459.14288330078125 403.9280090332031 -482.21429443359375Q382.99945068359375 -505.28570556640625 352.35662841796875 -515.8571166992188Q321.71380615234375 -526.4285278320312 281.7138671875 -526.4285278320312H122.85687255859375V-660.0H274.99957275390625Q393.71380615234375 -660.0 468.85662841796875 -621.0Q543.9994506835938 -582.0 579.4280090332031 -509.5Q614.8565673828125 -437.0 614.8565673828125 -336.0Q614.8565673828125 -258.0 596.9280090332031 -201.0Q578.9994506835938 -144.0 547.7137451171875 -105.14285278320312Q516.4280395507812 -66.28570556640625 476.7137756347656 -43.142852783203125Q436.99951171875 -20.0 392.5709533691406 -10.0Q348.14239501953125 0.0 304.57098388671875 0.0ZM48.5711669921875 0.0V-660.0H210.28546142578125V0.0Z" fill="#F6F1E7"/><g transform="translate(-1085 -330)"><path d="M2085.4282836914062 14.0Q2014.8568725585938 14.0 1958.2854614257812 -8.0Q1901.7140502929688 -30.0 1861.9997863769531 -73.0Q1822.2855224609375 -116.0 1801.214111328125 -179.85714721679688Q1780.1427001953125 -243.71429443359375 1780.1427001953125 -327.0Q1780.1427001953125 -445.0 1819.6426696777344 -521.5Q1859.1426391601562 -598.0 1929.6426086425781 -636.0Q2000.142578125 -674.0 2091.4282836914062 -674.0Q2161.7139892578125 -674.0 2217.928253173828 -652.3571472167969Q2274.1425170898438 -630.7142944335938 2313.8567810058594 -587.7142944335938Q2353.571044921875 -544.7142944335938 2374.6424560546875 -480.21429443359375Q2395.7138671875 -415.71429443359375 2395.7138671875 -331.0Q2395.7138671875 -244.71429443359375 2373.6424560546875 -179.85714721679688Q2351.571044921875 -115.0 2310.4996337890625 -72.0Q2269.42822265625 -29.0 2212.2139587402344 -7.5Q2154.9996948242188 14.0 2085.4282836914062 14.0ZM2091.142578125 -117.00006103515625Q2137.285400390625 -117.00006103515625 2167.92822265625 -140.07147216796875Q2198.571044921875 -163.14288330078125 2213.9281616210938 -208.9285888671875Q2229.2852783203125 -254.71429443359375 2229.2852783203125 -323.14288330078125Q2229.2852783203125 -395.57147216796875 2213.071014404297 -444.0000305175781Q2196.8567504882812 -492.4285888671875 2165.2139282226562 -517.2142944335938Q2133.5711059570312 -542.0 2086.4282836914062 -542.0Q2041.2854614257812 -542.0 2010.1426391601562 -518.2142944335938Q1978.9998168945312 -494.4285888671875 1963.1427001953125 -447.2857360839844Q1947.2855834960938 -400.14288330078125 1947.2855834960938 -330.4285888671875Q1947.2855834960938 -277.71429443359375 1956.3569946289062 -237.57144165039062Q1965.4284057617188 -197.4285888671875 1983.4998168945312 -170.64288330078125Q2001.5712280273438 -143.857177734375 2028.5711975097656 -130.42861938476562Q2055.5711669921875 -117.00006103515625 2091.142578125 -117.00006103515625Z" fill="#F2B705"/></g></svg><figcaption>16</figcaption></figure>
+            </div>
+          </div>
+          <figcaption>Monogramme « DO » : le D reste sur la ligne, le O saute. Sous 24 px de haut, le monogramme remplace le logo.</figcaption>
+        </figure>
+      </div>
+
+      <h3>Zone de protection et taille minimale</h3>
+      <div class="construct">
+        <svg viewBox="-520 -1540 4700 2080" role="img" aria-label="Zone de protection : un espace égal au saut du O, 330 unités, autour du logo">
+          <rect class="zone" x="-282" y="-1334" width="4318" height="1678"/>
+          <use href="#p-rest" class="rest"/>
+          <g transform="translate(0 -330)"><use href="#p-o" class="o-fill"/></g>
+          <line class="guide strong" x1="48" x2="-282" y1="-200" y2="-200"/>
+          <text class="lbl strong" x="-470" y="-240">330</text>
+          <line class="guide strong" x1="2100" x2="2100" y1="-1004" y2="-1334"/>
+          <text class="lbl strong" x="2140" y="-1150">330</text>
+          <text class="lbl" x="-282" y="480">Rien n'entre dans la zone : marge = hauteur du saut.</text>
+        </svg>
+      </div>
+      <div class="grid g3">
+        <div class="card"><span class="tag">Écran</span><h3>96 px de large</h3><p class="muted">En dessous, utiliser le monogramme.</p></div>
+        <div class="card"><span class="tag">Imprimé</span><h3>22 mm de large</h3><p class="muted">Billets, cartes de visite, étiquettes bagage.</p></div>
+        <div class="card"><span class="tag">Favicon</span><h3>Monogramme seul</h3><p class="muted">Encre et jaune, coins arrondis à 22,5 %.</p></div>
+      </div>
+
+      <h3>Ce qu'on ne fait pas</h3>
+      <div class="donts">
+        <div class="dont"><div class="st"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="Interdit : O aligné"><use href="#p-rest" class="rest"/><g transform="translate(0 0)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div><div class="txt"><b>Remettre le O dans le rang</b><span class="muted">Sauf à la première image de l'animation.</span></div></div>
+        <div class="dont"><div class="st"><svg class="logo" viewBox="20 -700 3714 1000" role="img" aria-label="Interdit : O descendu"><use href="#p-rest" class="rest"/><g transform="translate(0 260)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div><div class="txt"><b>Faire descendre le O</b><span class="muted">Le détour monte, toujours.</span></div></div>
+        <div class="dont"><div class="st"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="Interdit : O d'une autre couleur"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill" style="fill:#C4553A"/></g></g></svg></div><div class="txt"><b>Changer la couleur du O</b><span class="muted">Jaune, ou la couleur du mono. Rien d'autre.</span></div></div>
+        <div class="dont"><div class="st"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="Interdit : logo déformé" preserveAspectRatio="none" style="height:28px;width:100%"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div><div class="txt"><b>Déformer</b><span class="muted">Ni écraser, ni étirer, ni incliner.</span></div></div>
+        <div class="dont"><div class="st"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="Interdit : deux lettres qui sautent"><use href="#p-nou" class="rest"/><g transform="translate(0 -330)"><use href="#p-u" class="rest"/></g><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div><div class="txt"><b>Faire sauter une autre lettre</b><span class="muted">Un seul détour par mot.</span></div></div>
+        <div class="dont"><div class="st"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="Interdit : effets ajoutés" style="filter:drop-shadow(18px 22px 0 rgba(22,35,63,.35))"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div><div class="txt"><b>Ajouter des effets</b><span class="muted">Pas d'ombre, de contour ou de dégradé. Plus jamais de swoosh.</span></div></div>
+      </div>
+    </section>
+
+    <section class="chap" id="mouvement">
+      <div class="chap-head">
+        <span class="eyebrow">05 · Mouvement</span>
+        <h2>Le O saute, puis se clique</h2>
+        <p class="lead">L'animation part du O aligné, prend son élan, saute plus haut que sa place, retombe et se clique en position. Elle dure 1,15 seconde et ne se joue qu'une fois par visite.</p>
+      </div>
+      <div class="motion">
+        <div class="motion-stage"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="DÉTOUR"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg></div>
+        <div class="controls">
+          <button class="btn solid" id="replay">Rejouer le saut</button>
+          <button class="btn" id="slow">Au ralenti</button>
+          <span class="muted" id="motionNote" aria-live="polite"></span>
+        </div>
+        <div class="timeline">
+          <div><span class="ms">0 → 180 ms</span><b>Élan</b><span class="muted">Le O s'écrase sur la ligne : 108 % × 86 %.</span></div>
+          <div><span class="ms">180 → 500 ms</span><b>Saut</b><span class="muted">Il dépasse sa place de 150 unités et s'étire.</span></div>
+          <div><span class="ms">500 → 870 ms</span><b>Clic</b><span class="muted">Il retombe trop bas, s'écrase, rebondit.</span></div>
+          <div><span class="ms">870 → 1150 ms</span><b>Repos</b><span class="muted">Il se pose à ½ capitale. Plus rien ne bouge.</span></div>
+        </div>
+        <div class="grid g3">
+          <div class="card"><h3>Courbe</h3><p class="mono">cubic-bezier(.3, .7, .4, 1)</p><p class="muted">Pivot de déformation au pied du O.</p></div>
+          <div class="card"><h3>Quand l'utiliser</h3><p class="muted">Chargement du site, ouverture de l'app, et quand un conseiller confirme une réservation : le O se clique, c'est validé.</p></div>
+          <div class="card"><h3>Quand s'abstenir</h3><p class="muted">En boucle, au survol répété, et toujours si l'utilisateur a demandé moins d'animations.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chap" id="couleurs">
+      <div class="chap-head">
+        <span class="eyebrow">06 · Couleurs</span>
+        <h2>Encre de nuit, craie de quai, un jaune qui saute</h2>
+        <p class="lead">Le jaune est réservé au O et à un seul élément par composition. C'est sa rareté qui le fait voir.</p>
+      </div>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#16233F;color:#F6F1E7">Encre</div><div class="info"><button data-copy="#16233F">#16233F</button><span class="muted">RVB 22 35 63 · Pantone 289 C</span><span>Texte, logo, aplats.</span></div></div>
+        <div class="sw"><div class="chip" style="background:#F6F1E7;color:#16233F;box-shadow:inset 0 0 0 1px rgba(22,35,63,.12)">Craie</div><div class="info"><button data-copy="#F6F1E7">#F6F1E7</button><span class="muted">RVB 246 241 231 · papier non couché</span><span>Fond principal.</span></div></div>
+        <div class="sw"><div class="chip" style="background:#F2B705;color:#16233F">Jaune</div><div class="info"><button data-copy="#F2B705">#F2B705</button><span class="muted">RVB 242 183 5 · Pantone 7408 C</span><span>Le O. Un accent par page.</span></div></div>
+        <div class="sw"><div class="chip" style="background:#BCD3EA;color:#16233F">Ciel</div><div class="info"><button data-copy="#BCD3EA">#BCD3EA</button><span class="muted">RVB 188 211 234</span><span>Fonds secondaires, cartes.</span></div></div>
+        <div class="sw"><div class="chip" style="background:#C4553A;color:#F6F1E7">Brique</div><div class="info"><button data-copy="#C4553A">#C4553A</button><span class="muted">RVB 196 85 58</span><span>Alertes, prix modifié.</span></div></div>
+        <div class="sw"><div class="chip" style="background:#6B7385;color:#F6F1E7">Ballast</div><div class="info"><button data-copy="#6B7385">#6B7385</button><span class="muted">RVB 107 115 133</span><span>Texte secondaire.</span></div></div>
+      </div>
+      <figure>
+        <div class="ratio" role="img" aria-label="Proportions : craie 60 %, encre 28 %, ciel 6 %, jaune 4 %, brique 2 %">
+          <span style="flex:60;background:#F6F1E7;color:#16233F">Craie 60</span>
+          <span style="flex:28;background:#16233F;color:#F6F1E7">Encre 28</span>
+          <span style="flex:6;background:#BCD3EA;color:#16233F">6</span>
+          <span style="flex:4;background:#F2B705;color:#16233F">4</span>
+          <span style="flex:2;background:#C4553A"></span>
+        </div>
+        <figcaption>Proportions d'une composition type. Le jaune n'est jamais une couleur de texte sur fond clair : contraste 1,9:1.</figcaption>
+      </figure>
+    </section>
+
+    <section class="chap" id="typographie">
+      <div class="chap-head">
+        <span class="eyebrow">07 · Typographie</span>
+        <h2>Une voix grasse, une voix nette</h2>
+        <p class="lead">Deux familles libres de droits (licence OFL), disponibles sur Google Fonts. Pas de troisième.</p>
+      </div>
+      <div class="type-spec">
+        <div class="type-face">
+          <span class="eyebrow">Titrage · Bricolage Grotesque · 600 et 800</span>
+          <div class="big" style="font-family:var(--display);font-weight:800">Lyon, samedi.</div>
+          <p class="muted">Titres, prix, accroches. En minuscules, approche serrée (−2 %). Les capitales sont réservées au logo.</p>
+        </div>
+        <div class="type-face">
+          <span class="eyebrow">Texte · Instrument Sans · 400, 500 et 600</span>
+          <p style="font-size:22px;line-height:1.45;max-width:46ch">Départ de Paris-Montparnasse à 8 h 12, arrivée à Nantes à 10 h 18. Votre conseillère a vérifié le prix et les places ce matin à 9 h 40.</p>
+          <p class="muted">Textes courants, interfaces, propositions envoyées aux voyageurs.</p>
+        </div>
+        <div class="scale">
+          <div><span class="mono">Display 64</span><span style="font:800 clamp(36px,6vw,64px)/1 var(--display);letter-spacing:-.02em">Un détour</span></div>
+          <div><span class="mono">Titre 40</span><span style="font:800 clamp(28px,4vw,40px)/1.05 var(--display);letter-spacing:-.02em">Nantes en deux jours</span></div>
+          <div><span class="mono">Sous-titre 24</span><span style="font:600 24px/1.2 var(--display)">L'atelier des machines imaginaires</span></div>
+          <div><span class="mono">Texte 17</span><span style="font:400 17px/1.6 var(--body)">Une nuit à l'Hôtel des Machines, centre-ville, petit-déjeuner compris.</span></div>
+          <div><span class="mono">Légende 13</span><span style="font:500 13px/1.4 var(--body);letter-spacing:.02em">PRIX VÉRIFIÉ LE 19/10 À 09:40</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chap" id="photo">
+      <div class="chap-head">
+        <span class="eyebrow">08 · Photographie</span>
+        <h2>Des moments, pas des sourires</h2>
+        <p class="lead">Grain argentique, lumière naturelle, des gens de dos ou de profil, absorbés par ce qu'ils font. Chaque image porte un détail chaud qui attire l'œil, comme le O.</p>
+      </div>
+      <div class="photos">
+        <figure><img src="img/photo-train.jpg" alt="Une voyageuse lit près de la fenêtre d'un train, écharpe rouge, paysage flou" loading="lazy"></figure>
+        <figure><img src="img/photo-lyon.jpg" alt="Un couple marche de dos sous une voûte du Vieux-Lyon" loading="lazy"></figure>
+        <figure><img src="img/photo-nantes.jpg" alt="Patte en bois d'une machine géante, une visiteuse en manteau rouge" loading="lazy"></figure>
+        <figure><img src="img/photo-lille.jpg" alt="Des mains saupoudrent de sucre une gaufre sur un comptoir en bois" loading="lazy"></figure>
+        <figure><img src="img/photo-hotel.jpg" alt="Chambre d'hôtel au matin, fauteuil rouge, vue sur les toits" loading="lazy"></figure>
+      </div>
+      <div class="grid g2">
+        <div class="card"><span class="tag ok">Oui</span><p>Cadrages larges avec de l'air. Un geste en cours. Des lieux réels de nos destinations. Une seule tache de couleur chaude.</p></div>
+        <div class="card"><span class="tag no">Non</span><p>Regards caméra, sourires posés, HDR, couchers de soleil saturés, valises, avions. Aucune photo de banque d'images.</p></div>
+      </div>
+      <figure style="max-width:460px"><img src="img/ancien-photo.jpg" alt="Ancienne photo : couple souriant face caméra sur un quai, très saturée" loading="lazy"><figcaption>Ce qu'on quitte : la photo de 2012, posée et saturée.</figcaption></figure>
+    </section>
+
+    <section class="chap" id="voix">
+      <div class="chap-head">
+        <span class="eyebrow">09 · Ton de voix</span>
+        <h2>Précis d'abord, malicieux ensuite</h2>
+      </div>
+      <div class="grid g3">
+        <div class="card"><h3>On dit ce qu'on a vérifié</h3><p class="muted">Un prix est toujours daté. Une disponibilité a une heure. Si ça change, on le dit avant qu'on nous le demande.</p></div>
+        <div class="card"><h3>On parle en personne</h3><p class="muted">Chaque proposition est signée par un conseiller, avec son prénom. « Nous » pour l'agence, « je » pour le conseiller.</p></div>
+        <div class="card"><h3>On garde une pointe d'humour</h3><p class="muted">Une seule par message, dans la chute. Jamais sur le prix, jamais sur un problème.</p></div>
+      </div>
+      <div class="voice">
+        <div class="vrow">
+          <div class="vcell old"><span class="eyebrow">Avant</span><q>Partez autrement ! Des week-ends insolites en train, sans voiture et sans prise de tête.</q></div>
+          <div class="vcell new"><span class="eyebrow">Après</span><q>Deux jours, un train, et le détour que vous n'auriez pas trouvé seuls.</q></div>
+        </div>
+        <div class="vrow">
+          <div class="vcell old"><span class="eyebrow">Avant</span><q>À partir de 179 €* (*sous réserve de disponibilité)</q></div>
+          <div class="vcell new"><span class="eyebrow">Après</span><q>179 € par personne. Prix vérifié ce matin à 9 h 40 auprès de nos partenaires.</q></div>
+        </div>
+        <div class="vrow">
+          <div class="vcell old"><span class="eyebrow">Avant</span><q>Erreur 409 (unavailable) : Places insuffisantes pour cette prestation.</q></div>
+          <div class="vcell new"><span class="eyebrow">Après</span><q>L'atelier du samedi est complet depuis ce matin. Je vous propose dimanche 10 h, même prix ?</q></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chap" id="applications">
+      <div class="chap-head">
+        <span class="eyebrow">10 · Applications</span>
+        <h2>La marque au travail</h2>
+      </div>
+      <div class="apps">
+        <figure>
+          <div class="browser">
+            <div class="bar"><i></i><i></i><i></i><span>detour-voyages.fr</span></div>
+            <div class="site-nav"><svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="DÉTOUR"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg><ul><li>Destinations</li><li>Comment on travaille</li><li>L'équipe</li><li>Composer mon week-end</li></ul></div>
+            <div class="site-hero">
+              <div class="copy">
+                <h4>Le meilleur du voyage, c'est le dét<em>o</em>ur.</h4>
+                <p>Dites-nous vos envies et vos dates. Une conseillère compose votre week-end en train, vérifie chaque prix et vous l'envoie signé.</p>
+                <button class="site-btn" type="button" tabindex="-1">Composer mon week-end</button>
+              </div>
+              <div class="img" role="img" aria-label="Photo : voyageuse lisant dans un train"></div>
+            </div>
+          </div>
+          <figcaption>Site vitrine : l'accent jaune ne touche qu'un mot de l'accroche.</figcaption>
+        </figure>
+        <div class="trio">
+          <figure>
+            <div class="ticket">
+              <div class="main">
+                <svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="DÉTOUR"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg>
+                <div class="route">Paris → Nantes</div>
+                <dl>
+                  <dt>Date</dt><dd>sam. 7 nov. 2026</dd>
+                  <dt>Voyageurs</dt><dd>2</dd>
+                  <dt>Au programme</dt><dd>Train A/R · Hôtel des Machines · Atelier de machines imaginaires</dd>
+                  <dt>Total</dt><dd><b>358 €</b></dd>
+                </dl>
+                <span class="check">Prix vérifié le 19/10 à 09:40 · Confirmé par Alice</span>
+              </div>
+              <div class="stub"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" role="img" aria-label="Icône DÉTOUR" viewBox="-267.75 -1442.25 1894.5 1894.5"><rect x="-267.75" y="-1442.25" width="1894.5" height="1894.5" rx="426.2625" fill="#16233F"/><path d="M122.85687255859375 0.0V-133.57147216796875H299.57098388671875Q341.8565673828125 -133.57147216796875 375.0708312988281 -151.28570556640625Q408.28509521484375 -168.99993896484375 427.5708312988281 -211.21420288085938Q446.8565673828125 -253.428466796875 446.8565673828125 -328.0Q446.8565673828125 -383.14288330078125 435.8565673828125 -421.14288330078125Q424.8565673828125 -459.14288330078125 403.9280090332031 -482.21429443359375Q382.99945068359375 -505.28570556640625 352.35662841796875 -515.8571166992188Q321.71380615234375 -526.4285278320312 281.7138671875 -526.4285278320312H122.85687255859375V-660.0H274.99957275390625Q393.71380615234375 -660.0 468.85662841796875 -621.0Q543.9994506835938 -582.0 579.4280090332031 -509.5Q614.8565673828125 -437.0 614.8565673828125 -336.0Q614.8565673828125 -258.0 596.9280090332031 -201.0Q578.9994506835938 -144.0 547.7137451171875 -105.14285278320312Q516.4280395507812 -66.28570556640625 476.7137756347656 -43.142852783203125Q436.99951171875 -20.0 392.5709533691406 -10.0Q348.14239501953125 0.0 304.57098388671875 0.0ZM48.5711669921875 0.0V-660.0H210.28546142578125V0.0Z" fill="#F6F1E7"/><g transform="translate(-1085 -330)"><path d="M2085.4282836914062 14.0Q2014.8568725585938 14.0 1958.2854614257812 -8.0Q1901.7140502929688 -30.0 1861.9997863769531 -73.0Q1822.2855224609375 -116.0 1801.214111328125 -179.85714721679688Q1780.1427001953125 -243.71429443359375 1780.1427001953125 -327.0Q1780.1427001953125 -445.0 1819.6426696777344 -521.5Q1859.1426391601562 -598.0 1929.6426086425781 -636.0Q2000.142578125 -674.0 2091.4282836914062 -674.0Q2161.7139892578125 -674.0 2217.928253173828 -652.3571472167969Q2274.1425170898438 -630.7142944335938 2313.8567810058594 -587.7142944335938Q2353.571044921875 -544.7142944335938 2374.6424560546875 -480.21429443359375Q2395.7138671875 -415.71429443359375 2395.7138671875 -331.0Q2395.7138671875 -244.71429443359375 2373.6424560546875 -179.85714721679688Q2351.571044921875 -115.0 2310.4996337890625 -72.0Q2269.42822265625 -29.0 2212.2139587402344 -7.5Q2154.9996948242188 14.0 2085.4282836914062 14.0ZM2091.142578125 -117.00006103515625Q2137.285400390625 -117.00006103515625 2167.92822265625 -140.07147216796875Q2198.571044921875 -163.14288330078125 2213.9281616210938 -208.9285888671875Q2229.2852783203125 -254.71429443359375 2229.2852783203125 -323.14288330078125Q2229.2852783203125 -395.57147216796875 2213.071014404297 -444.0000305175781Q2196.8567504882812 -492.4285888671875 2165.2139282226562 -517.2142944335938Q2133.5711059570312 -542.0 2086.4282836914062 -542.0Q2041.2854614257812 -542.0 2010.1426391601562 -518.2142944335938Q1978.9998168945312 -494.4285888671875 1963.1427001953125 -447.2857360839844Q1947.2855834960938 -400.14288330078125 1947.2855834960938 -330.4285888671875Q1947.2855834960938 -277.71429443359375 1956.3569946289062 -237.57144165039062Q1965.4284057617188 -197.4285888671875 1983.4998168945312 -170.64288330078125Q2001.5712280273438 -143.857177734375 2028.5711975097656 -130.42861938476562Q2055.5711669921875 -117.00006103515625 2091.142578125 -117.00006103515625Z" fill="#F2B705"/></g></svg></div>
+            </div>
+            <figcaption>Carnet de route envoyé au voyageur.</figcaption>
+          </figure>
+          <figure>
+            <div class="post">
+              <svg class="logo" viewBox="20 -1034 3714 1076" role="img" aria-label="DÉTOUR"><use href="#p-rest" class="rest"/><g transform="translate(0 -330)"><g class="o-move"><use href="#p-o" class="o-fill"/></g></g></svg>
+              <p>Nantes, l'éléphant, et une gaufre qui n'avait rien à faire là.</p>
+            </div>
+            <figcaption>Publication sociale sur aplat jaune.</figcaption>
+          </figure>
+          <figure>
+            <div class="phone" aria-label="Écran d'accueil de téléphone avec l'icône DÉTOUR">
+              <div class="app"><i></i>Plans</div><div class="app"><i></i>Météo</div><div class="app"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" role="img" aria-label="Icône DÉTOUR" viewBox="-267.75 -1442.25 1894.5 1894.5"><rect x="-267.75" y="-1442.25" width="1894.5" height="1894.5" rx="426.2625" fill="#16233F"/><path d="M122.85687255859375 0.0V-133.57147216796875H299.57098388671875Q341.8565673828125 -133.57147216796875 375.0708312988281 -151.28570556640625Q408.28509521484375 -168.99993896484375 427.5708312988281 -211.21420288085938Q446.8565673828125 -253.428466796875 446.8565673828125 -328.0Q446.8565673828125 -383.14288330078125 435.8565673828125 -421.14288330078125Q424.8565673828125 -459.14288330078125 403.9280090332031 -482.21429443359375Q382.99945068359375 -505.28570556640625 352.35662841796875 -515.8571166992188Q321.71380615234375 -526.4285278320312 281.7138671875 -526.4285278320312H122.85687255859375V-660.0H274.99957275390625Q393.71380615234375 -660.0 468.85662841796875 -621.0Q543.9994506835938 -582.0 579.4280090332031 -509.5Q614.8565673828125 -437.0 614.8565673828125 -336.0Q614.8565673828125 -258.0 596.9280090332031 -201.0Q578.9994506835938 -144.0 547.7137451171875 -105.14285278320312Q516.4280395507812 -66.28570556640625 476.7137756347656 -43.142852783203125Q436.99951171875 -20.0 392.5709533691406 -10.0Q348.14239501953125 0.0 304.57098388671875 0.0ZM48.5711669921875 0.0V-660.0H210.28546142578125V0.0Z" fill="#F6F1E7"/><g transform="translate(-1085 -330)"><path d="M2085.4282836914062 14.0Q2014.8568725585938 14.0 1958.2854614257812 -8.0Q1901.7140502929688 -30.0 1861.9997863769531 -73.0Q1822.2855224609375 -116.0 1801.214111328125 -179.85714721679688Q1780.1427001953125 -243.71429443359375 1780.1427001953125 -327.0Q1780.1427001953125 -445.0 1819.6426696777344 -521.5Q1859.1426391601562 -598.0 1929.6426086425781 -636.0Q2000.142578125 -674.0 2091.4282836914062 -674.0Q2161.7139892578125 -674.0 2217.928253173828 -652.3571472167969Q2274.1425170898438 -630.7142944335938 2313.8567810058594 -587.7142944335938Q2353.571044921875 -544.7142944335938 2374.6424560546875 -480.21429443359375Q2395.7138671875 -415.71429443359375 2395.7138671875 -331.0Q2395.7138671875 -244.71429443359375 2373.6424560546875 -179.85714721679688Q2351.571044921875 -115.0 2310.4996337890625 -72.0Q2269.42822265625 -29.0 2212.2139587402344 -7.5Q2154.9996948242188 14.0 2085.4282836914062 14.0ZM2091.142578125 -117.00006103515625Q2137.285400390625 -117.00006103515625 2167.92822265625 -140.07147216796875Q2198.571044921875 -163.14288330078125 2213.9281616210938 -208.9285888671875Q2229.2852783203125 -254.71429443359375 2229.2852783203125 -323.14288330078125Q2229.2852783203125 -395.57147216796875 2213.071014404297 -444.0000305175781Q2196.8567504882812 -492.4285888671875 2165.2139282226562 -517.2142944335938Q2133.5711059570312 -542.0 2086.4282836914062 -542.0Q2041.2854614257812 -542.0 2010.1426391601562 -518.2142944335938Q1978.9998168945312 -494.4285888671875 1963.1427001953125 -447.2857360839844Q1947.2855834960938 -400.14288330078125 1947.2855834960938 -330.4285888671875Q1947.2855834960938 -277.71429443359375 1956.3569946289062 -237.57144165039062Q1965.4284057617188 -197.4285888671875 1983.4998168945312 -170.64288330078125Q2001.5712280273438 -143.857177734375 2028.5711975097656 -130.42861938476562Q2055.5711669921875 -117.00006103515625 2091.142578125 -117.00006103515625Z" fill="#F2B705"/></g></svg>DÉTOUR</div><div class="app"><i></i>Photos</div>
+              <div class="app"><i></i>Billets</div><div class="app"><i></i>Notes</div><div class="app"><i></i>Horloge</div><div class="app"><i></i>Musique</div>
+            </div>
+            <figcaption>Icône d'application.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="chap" id="fichiers">
+      <div class="chap-head">
+        <span class="eyebrow">11 · Fichiers</span>
+        <h2>Livrables</h2>
+        <p class="lead">Tous les fichiers sont dans le dépôt, dossier <code class="mono">brand-2026/</code>. Les SVG font foi ; les PNG sont des exports.</p>
+      </div>
+      <div class="files">
+        <div><code>logo/detour-logo.svg</code><span>Principale</span></div>
+        <div><code>logo/detour-logo-negatif.svg</code><span>Négatif sur encre</span></div>
+        <div><code>logo/detour-logo-mono-encre.svg · mono-blanc.svg</code><span>Monochromes</span></div>
+        <div><code>logo/detour-logo-anime.svg</code><span>Saut en boucle (démo)</span></div>
+        <div><code>logo/detour-monogramme.svg · icone-app.svg · avatar.svg</code><span>Monogramme DO</span></div>
+        <div><code>logo/png/</code><span>Exports 1600 px, icônes 32 / 180 / 512</span></div>
+        <div><code>photo/</code><span>Direction photo, 5 images</span></div>
+        <div><code>exploration/</code><span>11 planches de recherche</span></div>
+      </div>
+    </section>
+
+    <footer>
+      <span>DÉTOUR Voyages · charte de marque 1.0</span>
+      <span>Bricolage Grotesque et Instrument Sans, licence SIL OFL 1.1</span>
+    </footer>
+  </main>
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function play(svg, slow) {
+    if (!svg || reduce) return;
+    var o = svg.querySelector(".o-move");
+    svg.classList.remove("play");
+    o.style.animationDuration = slow ? "4600ms" : "";
+    void svg.getBoundingClientRect();
+    svg.classList.add("play");
+  }
+  var hero = document.getElementById("heroLogo");
+  var heroSvg = hero.querySelector("svg");
+  hero.addEventListener("click", function () { play(heroSvg); });
+  setTimeout(function () { play(heroSvg); }, 350);
+  var motionSvg = document.querySelector(".motion-stage svg");
+  var note = document.getElementById("motionNote");
+  document.getElementById("replay").addEventListener("click", function () { play(motionSvg); note.textContent = reduce ? "Animation désactivée par vos préférences système." : ""; });
+  document.getElementById("slow").addEventListener("click", function () { play(motionSvg, true); note.textContent = reduce ? "Animation désactivée par vos préférences système." : "Ralenti × 4"; });
+  if ("IntersectionObserver" in window) {
+    var seen = false;
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting && !seen) { seen = true; play(motionSvg); } });
+    }, { threshold: .6 }).observe(motionSvg);
+  }
+  var toast;
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var v = b.getAttribute("data-copy");
+      function done(msg) {
+        if (toast) toast.remove();
+        toast = document.createElement("div");
+        toast.className = "toast"; toast.textContent = msg;
+        document.body.appendChild(toast);
+        setTimeout(function () { if (toast) { toast.remove(); toast = null; } }, 1600);
+      }
+      try {
+        navigator.clipboard.writeText(v).then(function () { done(v + " copié"); }, function () { select(b); done("Sélectionné : " + v); });
+      } catch (e) { select(b); done("Sélectionné : " + v); }
+    });
+  });
+  function select(el) { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+})();
+</script>
